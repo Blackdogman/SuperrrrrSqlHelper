@@ -19,7 +19,7 @@ namespace SuperrrrrSqlHelper
 
         public Sqlhelper()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+            string connStr = ConfigurationManager.AppSettings["connectionString"];
             conn = new SqlConnection(connStr);
         }
 
@@ -28,7 +28,7 @@ namespace SuperrrrrSqlHelper
         /// 获取数据库的连接
         /// </summary>
         /// <returns>SqlConnection</returns>
-        public static SqlConnection GetConn()
+        public SqlConnection GetConn()
         {
             //判断数据库状态
             if (conn.State == ConnectionState.Closed)
@@ -46,7 +46,7 @@ namespace SuperrrrrSqlHelper
         /// <param name="cmdText">SQL语句或存储过程</param>
         /// <param name="ct">命令类型</param>
         /// <returns>受影响的行数</returns>
-        public static int ExecuteNonQuery(string cmdText, CommandType ct)
+        public int ExecuteNonQuery(string cmdText, CommandType ct)
         {
             int res;
             try
@@ -79,7 +79,7 @@ namespace SuperrrrrSqlHelper
         /// <param name="paras">参数</param>
         /// <param name="ct">命令类型</param>
         /// <returns>受影响的行数</returns>
-        public static int ExecuteNonQuery(string cmdText, SqlParameter[] paras, CommandType ct)
+        public int ExecuteNonQuery(string cmdText, SqlParameter[] paras, CommandType ct)
         {
             int res;
             using (cmd = new SqlCommand(cmdText, GetConn()))
@@ -101,7 +101,7 @@ namespace SuperrrrrSqlHelper
         /// <param name="cmdText">SQL语句或存储过程</param>
         /// <param name="ct">命令类型</param>
         /// <returns>DataTable</returns>
-        public static DataTable ExecuteQuery(string cmdText, CommandType ct)
+        public DataTable ExecuteQuery(string cmdText, CommandType ct)
         {
             DataTable dt = new DataTable();
             cmd = new SqlCommand(cmdText, GetConn());
@@ -174,6 +174,5 @@ namespace SuperrrrrSqlHelper
             }
         }
         #endregion
-
     }
 } 
