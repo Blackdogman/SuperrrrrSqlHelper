@@ -23,17 +23,26 @@ public void Demo()
 + 有哪些方法
 ```
 //得到Conn
-GetConn();
-//执行不带参数的增删改语句
-ExecuteNonQuery(string cmdText, CommandType ct);
-//执行带参数的增删改语句
-ExecuteNonQuery(string cmdText, SqlParameter[] paras, CommandType ct);
+GetConn()
+return SqlConnection;
+
+//执行不带参数的增删改语句,返回受影响的行数
+ExecuteNonQuery(string cmdText, CommandType ct)
+return int;
+
+//执行带参数的增删改语句,返回受影响的行数
+ExecuteNonQuery(string cmdText, SqlParameter[] paras, CommandType ct)
+return int;
+
 //不带参的查询
 ExecuteQuery(string cmdText, CommandType ct)
 return DataTable;
+
 //带参的查询
 ExecuteQuery(string cmdText, SqlParameter[] paras, CommandType ct)
 return DataTable;
+
 //查询返回第一行第一列
-ExecuteScalar(string sql);
+ExecuteScalar(string sql)
+return String;
 ```
