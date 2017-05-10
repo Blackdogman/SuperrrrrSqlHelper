@@ -8,7 +8,7 @@
 //引用这个项目的DLL后
 using SuperrrrrSqlHelper;
 
-public void Demo()
+public JsonResult Demo()
 {
    Sqlhelper sh = new Sqlhelper();
    return Json(sh.GetConn());
